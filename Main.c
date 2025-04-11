@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#define BUFFER 100
 
 
 //Adicionar tarefa
@@ -33,20 +34,34 @@ return 0;
 void adicionarTarefa(){
     int cont = 0;
     int loop = 1;
-    char tarefa[100];
     Tarefa teste;
 
 
     while(loop != 0){
-    printf("Digite a tarefa a ser incluida!");
+    printf("\nDigite a tarefa a ser incluida!\n");
     fflush(stdin);
-    fgets(tarefa,100,stdin);
-    teste.id[cont] = cont;
-    teste.descricao[100] = tarefa[100];
-    printf("ID: %d,\nTarefa: %s\n",teste.id[cont], teste.descricao);
+    fgets(teste.descricao,BUFFER,stdin);
+    printf("tarefa: %s",teste.descricao);
+
+
+        void criaTarefa(int numero, char descricao[BUFFER], int status){
+        Tarefa I = {numero, descricao, status};
+        }
+
+        criaTarefa(teste.id,teste.descricao[BUFFER],teste.status);
+
+    printf("%d,%s,%d",I.id,I.descricao,I.id);
+
+    /*printf("primeiro valor: %d", teste.id[cont]);
+    printf("\n\nDigite o ID: ");
+    scanf("%d", &teste.id[0]);
+    //fgets(teste.id, BUFFER,stdin);
+    printf(" %d", teste.id[0]);*/
+
+    
         cont++;
 
-        if(cont == 10){
+        if(cont > 10){
             loop = 0;
             printf("Limite de tarefas atingido!");
         }
