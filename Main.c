@@ -24,6 +24,7 @@ void removerTarefa();
 
 
 int main(){
+    
     adicionarTarefa();
 
 
@@ -32,40 +33,30 @@ return 0;
 
 
 void adicionarTarefa(){
+    
     int cont = 0;
     int loop = 1;
-    Tarefa teste;
+    char info[15];
+
+//laço que recebe tarefa e aumenta o ID
+    for (int i = 11; i > cont; cont++)
+    {
+        printf("Diga qual tarefa voce deseja incluir:\n");
+        fflush(stdin);
+        fgets(info,15,stdin);
+        printf("%s", info);
 
 
-    while(loop != 0){
-    printf("\nDigite a tarefa a ser incluida!\n");
-    fflush(stdin);
-    fgets(teste.descricao,BUFFER,stdin);
-    printf("tarefa: %s",teste.descricao);
+        Tarefa info
 
 
-        void criaTarefa(int numero, char descricao[BUFFER], int status){
-        Tarefa I = {numero, descricao, status};
-        }
-
-        criaTarefa(teste.id,teste.descricao[BUFFER],teste.status);
-
-    printf("%d,%s,%d",I.id,I.descricao,I.id);
-
-    /*printf("primeiro valor: %d", teste.id[cont]);
-    printf("\n\nDigite o ID: ");
-    scanf("%d", &teste.id[0]);
-    //fgets(teste.id, BUFFER,stdin);
-    printf(" %d", teste.id[0]);*/
-
+        //casafgets(Tarefa,BUFFER,stdin);
+       
+    }
     
-        cont++;
+    
 
-        if(cont > 10){
-            loop = 0;
-            printf("Limite de tarefas atingido!");
-        }
+
 
 
     }
-}
