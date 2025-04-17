@@ -24,6 +24,8 @@ void removerTarefa();
 
 
 int main(){
+
+    
     
     adicionarTarefa();
 
@@ -33,21 +35,40 @@ return 0;
 
 
 void adicionarTarefa(){
+    Tarefa acao;
     
-    int cont = 0;
-    int loop = 1;
     char info[15];
 
-//laço que recebe tarefa e aumenta o ID
-    for (int i = 11; i > cont; cont++)
+//loop that raises the ID and recieves a chore to do.
+while (1)
+{
+    for (int i = 1; i < 11; i++)
     {
+        switch (i)
+        {
+        case 1:
         printf("Diga qual tarefa voce deseja incluir:\n");
         fflush(stdin);
         fgets(info,15,stdin);
-        printf("%s", info);
+        snprintf(acao.descricao, BUFFER, "%s",info);
+        acao.id[0] = 1;
+        acao.concluida = 0;
+        printf("Tarefa: %s, \nID: %d e status: %d", acao.descricao, acao.id[0], acao.concluida);
+            break;
+        
+
+        default:
+            break;
+        }
+
+    } 
+
+        
+        
 
 
-        Tarefa info
+
+        
 
 
         //casafgets(Tarefa,BUFFER,stdin);
