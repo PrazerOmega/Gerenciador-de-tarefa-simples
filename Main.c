@@ -18,6 +18,7 @@ typedef struct
 
 
 void adicionarTarefa();
+void criaTarefa();
 void listarTarefas();
 void marcarConcluida();
 void removerTarefa();
@@ -33,11 +34,21 @@ int main(){
 return 0;
 }
 
+void criaTarefa(char info[BUFFER], int arrayDes, ){
+    printf("Diga qual tarefa voce deseja incluir:\n");
+    fflush(stdin);
+    fgets(info,15,stdin);
+    snprintf(acao.descricao[0], BUFFER, "%s",info);
+    acao.id[0] = 1;
+    acao.concluida = 0;
+    printf("\nTarefa: %sID: %d\nStatus: %s\n", acao.descricao[0], acao.id[0],
+         acao.concluida?"concluida" : "Pendente");
+  
 
-void adicionarTarefa(){
+/*void adicionarTarefa(){
     Tarefa acao;
     int i, escolha;
-    char info[15];
+    char info[15];*/
 
 //loop that raises the ID and recieves a chore to do.
 while (1)
