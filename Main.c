@@ -34,7 +34,7 @@ int main(){
 return 0;
 }
 
-void criaTarefa(char info[BUFFER], int arrayDes, ){
+/*void criaTarefa(char info[BUFFER], int arrayDes, ){
     printf("Diga qual tarefa voce deseja incluir:\n");
     fflush(stdin);
     fgets(info,15,stdin);
@@ -42,18 +42,18 @@ void criaTarefa(char info[BUFFER], int arrayDes, ){
     acao.id[0] = 1;
     acao.concluida = 0;
     printf("\nTarefa: %sID: %d\nStatus: %s\n", acao.descricao[0], acao.id[0],
-         acao.concluida?"concluida" : "Pendente");
+         acao.concluida?"concluida" : "Pendente");*/
   
 
-/*void adicionarTarefa(){
+void adicionarTarefa(){
     Tarefa acao;
     int i, escolha;
-    char info[15];*/
+    char info[15];
 
 //loop that raises the ID and recieves a chore to do.
 while (1)
 {
-    printf("Oque deseja fazer?\n1- Alterar tarefa\n2- Voltar ao menu");
+    printf("Oque deseja fazer?\n1- Alterar tarefa\n0- Voltar ao menu");
     scanf("%d", &escolha);
     if(escolha == 0){
         break;
@@ -172,7 +172,7 @@ while (1)
      
        
     }else{
-        printf("Escolha invalid'")
+        printf("Escolha invalid'");
     }
 
     }
