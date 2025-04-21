@@ -34,15 +34,15 @@ int main(){
 return 0;
 }
 
-/*void criaTarefa(char info[BUFFER], int arrayDes, ){
+void criaTarefa(char informacao[BUFFER], int arrayDes, ){
     printf("Diga qual tarefa voce deseja incluir:\n");
     fflush(stdin);
-    fgets(info,15,stdin);
-    snprintf(acao.descricao[0], BUFFER, "%s",info);
-    acao.id[0] = 1;
+    fgets(informacao,15,stdin);
+    snprintf(acao.descricao[arrayDes], BUFFER, "%s",informacao);
+    acao.id[arrayDes] = 1;
     acao.concluida = 0;
-    printf("\nTarefa: %sID: %d\nStatus: %s\n", acao.descricao[0], acao.id[0],
-         acao.concluida?"concluida" : "Pendente");*/
+    printf("\nTarefa: %sID: %d\nStatus: %s\n", acao.descricao[arrayDes], acao.id[arrayDes],
+         acao.concluida?"concluida\n" : "Pendente\n");*/
   
 
 void adicionarTarefa(){
@@ -53,7 +53,7 @@ void adicionarTarefa(){
 //loop that raises the ID and recieves a chore to do.
 while (1)
 {
-    printf("Oque deseja fazer?\n1- Alterar tarefa\n0- Voltar ao menu");
+    printf("Oque deseja fazer?\n1- Alterar tarefa\n0- Voltar ao menu\n");
     scanf("%d", &escolha);
     if(escolha == 0){
         break;
@@ -64,104 +64,34 @@ while (1)
         switch (i)
         {
         case 1:
-        printf("Diga qual tarefa voce deseja incluir:\n");
-        fflush(stdin);
-        fgets(info,15,stdin);
-        snprintf(acao.descricao[0], BUFFER, "%s",info);
-        acao.id[0] = 1;
-        acao.concluida = 0;
-        printf("\nTarefa: %sID: %d\nStatus: %s\n", acao.descricao[0], acao.id[0],
-             acao.concluida?"concluida" : "Pendente");
+        criaTarefa(info, 0);
             break;
         case 2:
-        printf("Diga qual tarefa voce deseja incluir:\n");
-        fflush(stdin);
-        fgets(info,15,stdin);
-        snprintf(acao.descricao[1], BUFFER, "%s",info);
-        acao.id[1] = 2;
-        acao.concluida = 0;
-        printf("\nTarefa: %sID: %d\nStatus: %s\n", acao.descricao[1], acao.id[1],
-             acao.concluida?"concluida" : "Pendente");
+        criaTarefa(info, 1);
             break;
         case 3:
-        printf("Diga qual tarefa voce deseja incluir:\n");
-        fflush(stdin);
-        fgets(info,15,stdin);
-        snprintf(acao.descricao[2], BUFFER, "%s",info);
-        acao.id[2] = 3;
-        acao.concluida = 0;
-        printf("\nTarefa: %sID: %d\nStatus: %s\n", acao.descricao[2], acao.id[2],
-             acao.concluida?"concluida" : "Pendente");
+        criaTarefa(info, 2);
             break;
         case 4:
-        printf("Diga qual tarefa voce deseja incluir:\n");
-        fflush(stdin);
-        fgets(info,15,stdin);
-        snprintf(acao.descricao[3], BUFFER, "%s",info);
-        acao.id[3] = 1;
-        acao.concluida = 0;
-        printf("\nTarefa: %sID: %d\nStatus: %s\n", acao.descricao[3], acao.id[3],
-             acao.concluida?"concluida" : "Pendente");
+        criaTarefa(info, 3);
             break;
         case 5:
-        printf("Diga qual tarefa voce deseja incluir:\n");
-        fflush(stdin);
-        fgets(info,15,stdin);
-        snprintf(acao.descricao[4], BUFFER, "%s",info);
-        acao.id[4] = 1;
-        acao.concluida = 0;
-        printf("\nTarefa: %sID: %d\nStatus: %s\n", acao.descricao[4], acao.id[4],
-             acao.concluida?"concluida" : "Pendente");
+        criaTarefa(info, 4);
             break;
         case 6:
-         printf("Diga qual tarefa voce deseja incluir:\n");
-         fflush(stdin);
-         fgets(info,15,stdin);
-         snprintf(acao.descricao[5], BUFFER, "%s",info);
-         acao.id[5] = 1;
-         acao.concluida = 0;
-         printf("\nTarefa: %sID: %d\nStatus: %s\n", acao.descricao[5], acao.id[5],
-              acao.concluida?"concluida" : "Pendente");
+        criaTarefa(info, 5);
              break;
         case 7:
-        printf("Diga qual tarefa voce deseja incluir:\n");
-        fflush(stdin);
-        fgets(info,15,stdin);
-        snprintf(acao.descricao[6], BUFFER, "%s",info);
-        acao.id[6] = 1;
-        acao.concluida = 0;
-        printf("\nTarefa: %sID: %d\nStatus: %s\n", acao.descricao[6], acao.id[6],
-             acao.concluida?"concluida" : "Pendente");
+        criaTarefa(info, 6);
             break;
         case 8:
-        printf("Diga qual tarefa voce deseja incluir:\n");
-        fflush(stdin);
-        fgets(info,15,stdin);
-        snprintf(acao.descricao[7], BUFFER, "%s",info);
-        acao.id[7] = 1;
-        acao.concluida = 0;
-        printf("\nTarefa: %sID: %d\nStatus: %s\n", acao.descricao[7], acao.id[7],
-             acao.concluida?"concluida" : "Pendente");
+        criaTarefa(info, 7);
             break;   
         case 9:
-        printf("Diga qual tarefa voce deseja incluir:\n");
-        fflush(stdin);
-        fgets(info,15,stdin);
-        snprintf(acao.descricao[0], BUFFER, "%s",info);
-        acao.id[8] = 1;
-        acao.concluida = 0;
-        printf("\nTarefa: %sID: %d\nStatus: %s\n", acao.descricao[8], acao.id[8],
-             acao.concluida?"concluida" : "Pendente");
+        criaTarefa(info, 8);
             break;
         case 10:
-        printf("Diga qual tarefa voce deseja incluir:\n");
-        fflush(stdin);
-        fgets(info,15,stdin);
-        snprintf(acao.descricao[9], BUFFER, "%s",info);
-        acao.id[9] = 1;
-        acao.concluida = 0;
-        printf("\nTarefa: %sID: %d\nStatus: %s\n", acao.descricao[9], acao.id[9],
-             acao.concluida?"concluida" : "Pendente");
+        criaTarefa(info, 9);
             break;
 
         default:
