@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #define BUFFER 100
+#define opcao 0
 
 
 //Adicionar tarefa
@@ -16,7 +17,7 @@ typedef struct
     int concluida;// 0 = não, 1 = sim
 }Tarefa;
 
-
+void menu();
 void adicionarTarefa();
 void criaTarefa();
 void listarTarefas();
@@ -28,11 +29,24 @@ int main(){
 
     
     
-    adicionarTarefa();
-
+    //adicionarTarefa();
+    //listarTarefas();
+    menu();
 
 return 0;
 }
+
+void menu(){
+
+    printf("Escolha uma das opções.\n1 - Adicionar uma tarefa\n2 - Visualizar tarefas\n3 - Alterar Status\n4 - Excluir Tarefa.");
+}
+
+
+
+
+
+
+
 
 void criaTarefa(char informacao[BUFFER], int arrayDes, ){
     printf("Diga qual tarefa voce deseja incluir:\n");
@@ -102,8 +116,20 @@ while (1)
      
        
     }else{
-        printf("Escolha invalid'");
+        printf("Escolha invalida!");
     }
 
     }
 }
+
+ void listarTarefas(){
+    
+
+    printf("Digite a opção que deseja.\n1- Visualizar tarefa unica\n2- Visualizar Todas as tarefas\n");
+    scanf("%d", &opcao);
+
+    if(opcao == 1){
+
+    }
+
+ }
