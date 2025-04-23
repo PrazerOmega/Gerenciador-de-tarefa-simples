@@ -23,8 +23,15 @@ void removerTarefa();
 
 
 int main(){
+<<<<<<< Updated upstream
     adicionarTarefa();
 
+=======
+    
+    //adicionarTarefa();
+    //listarTarefas();
+    //menu();
+>>>>>>> Stashed changes
 
 return 0;
 }
