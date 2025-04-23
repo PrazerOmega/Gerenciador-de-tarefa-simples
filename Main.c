@@ -1,7 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
 #define BUFFER 100
-#define opcao 0
 
 
 //Adicionar tarefa
@@ -31,7 +30,7 @@ int main(){
     
     //adicionarTarefa();
     //listarTarefas();
-    menu();
+    //menu();
 
 return 0;
 }
@@ -48,7 +47,7 @@ void menu(){
 
 
 
-void criaTarefa(char informacao[BUFFER], int arrayDes, ){
+void criaTarefa(char informacao[BUFFER], int arrayDes){
     printf("Diga qual tarefa voce deseja incluir:\n");
     fflush(stdin);
     fgets(informacao,15,stdin);
@@ -56,7 +55,7 @@ void criaTarefa(char informacao[BUFFER], int arrayDes, ){
     acao.id[arrayDes] = 1;
     acao.concluida = 0;
     printf("\nTarefa: %sID: %d\nStatus: %s\n", acao.descricao[arrayDes], acao.id[arrayDes],
-         acao.concluida?"concluida\n" : "Pendente\n");*/
+         acao.concluida?"concluida\n" : "Pendente\n");
   
 
 void adicionarTarefa(){
@@ -121,9 +120,10 @@ while (1)
 
     }
 }
+}
 
  void listarTarefas(){
-    
+    int *opcao;
 
     printf("Digite a opção que deseja.\n1- Visualizar tarefa unica\n2- Visualizar Todas as tarefas\n");
     scanf("%d", &opcao);
