@@ -8,7 +8,9 @@ typedef struct
     int concluida;// 0 = não, 1 = sim
 }Tarefa;
 
+
 void adicionarTarefa();
+void menu();
 void listarTarefas();
 void marcarConcluida();
 void removerTarefa();
