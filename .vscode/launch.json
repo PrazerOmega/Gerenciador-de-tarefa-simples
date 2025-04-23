@@ -9,7 +9,8 @@
       "stopAtEntry": false,
       "externalConsole": true,
       "cwd": "c:/Users/kaue.vinicius/Documents/GitHub/Criar Tarefa tarefa",
-      "program": "c:/Users/kaue.vinicius/Documents/GitHub/Criar Tarefa tarefa/build/Debug/outDebug",
+      "program": "${workspaceFolder}/build/Debug/outDebug.exe",
+
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
