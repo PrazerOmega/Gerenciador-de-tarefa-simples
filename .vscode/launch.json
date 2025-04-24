@@ -8,9 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/kaue.vinicius/Documents/GitHub/Criar Tarefa tarefa",
-      "program": "${workspaceFolder}/build/Debug/outDebug.exe",
-
+      "cwd": "c:/Users/Nxuak/Documents/GitHub/Gerenciador-de-tarefa-simples",
+      "program": "c:/Users/Nxuak/Documents/GitHub/Gerenciador-de-tarefa-simples/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
