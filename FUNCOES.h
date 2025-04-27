@@ -8,6 +8,8 @@ typedef struct
     int concluida;// 0 = não, 1 = sim
 }Tarefa;
 
+Tarefa base;
+
 
 void adicionarTarefa();
 void menu();

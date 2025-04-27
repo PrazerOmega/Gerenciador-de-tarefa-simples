@@ -9,9 +9,8 @@
 //remover tarefa
 //Sair do programa
 
-int main(){
-    adicionarTarefa();
+int main(void){
+    //adicionarTarefa();
+    listarTarefas();
 
-
-return 0;
 }
