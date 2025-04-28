@@ -9,7 +9,7 @@
 //Sair do programa
 
 void menu(){
-    printf("Escolha uma das opções.\n1 - Adicionar uma tarefa\n2 - Visualizar tarefas\n3 - Alterar Status\n4 - Excluir Tarefa.");
+    printf("\nEscolha uma das opções.\n1 - Adicionar uma tarefa\n2 - Visualizar tarefas\n3 - Alterar Status\n4 - Excluir Tarefa.");
 }
 
 
@@ -91,6 +91,7 @@ switch(escolha){
     printf("Opção invalida!\n Escolha outro numero.");
     listarTarefas;
 }
+menu();
 
 
 }

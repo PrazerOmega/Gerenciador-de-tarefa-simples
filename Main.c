@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <locale.h>
 #include "FUNCOES.h"
 
 
@@ -10,7 +11,9 @@
 //Sair do programa
 
 int main(void){
+    setlocale(LC_ALL,"");
     //adicionarTarefa();
     listarTarefas();
+    //menu();
 
 }
