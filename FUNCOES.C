@@ -27,6 +27,9 @@ void menu(){
         Sleep(3000);
         break;
     case '1':
+    printf("Entrando no menu...");
+    Sleep(2500);
+        system("cls");
         adicionarTarefa();
         break;
     case '2':
@@ -64,9 +67,12 @@ void adicionarTarefa(){
     int loop = 1;
     char tarefa[1024];
 
-    while(loop != 0){
+    while(1){
     printf("Digite o ID da tarefa a ser incluida:\n");
-    scanf("%d", &escolha);
+    while (1)
+    {    
+    escolha = getch();
+    //scanf("%d", &escolha);
     switch (escolha)
     {
     case 1:
@@ -75,7 +81,7 @@ void adicionarTarefa(){
     fgets(tarefa,1024,stdin);
     base.id[escolha -1] = escolha;
     base.descricao[1024] = tarefa[1024];
-    printf("ID: %d,\nTarefa: %s\n",base.id[escolha], base.descricao);
+    printf("ID: %d,\nTarefa: %s\n",base.id[escolha+1], base.descricao[1024]);
     pergunta();
         break;
     
@@ -97,7 +103,7 @@ void adicionarTarefa(){
 
     }
 }
-
+}
 
 /*void criaTarefa(char informacao[BUFFER], int arrayDes){
     printf("Diga qual tarefa voce deseja incluir:\n");
