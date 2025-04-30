@@ -63,23 +63,23 @@ void pergunta(){
 
 void adicionarTarefa(){
     int cont = 0;
-    char escolha;
+    char escolha = {0};
     int loop = 1;
     char tarefa[1024], buffer[200];
 
     while(1){
-    printf("Digite o ID da tarefa a ser incluida:\n");
-    while (1)
-    {    
+    printf("Digite o ID da tarefa a ser incluida:%c\n", escolha);
+   
+        
     escolha = getch();
     //scanf("%d", &escolha);
     switch (escolha)
     {
     case '1':
-    printf("Escreva a tarefa %d:", escolha);
-    fflush(stdin);
+    printf("Escreva a tarefa %c:", escolha);
+    //fflush(stdin);
     fgets(tarefa,sizeof(buffer),stdin);
-    base.id[escolha -1] = escolha;
+    base.id[0] = (int)escolha;
     base.descricao[1024] = tarefa[1024];
     printf("ID: %d,\nTarefa: %s\n",base.id[escolha+1], base.descricao[1024]);
     pergunta();
@@ -101,7 +101,7 @@ void adicionarTarefa(){
         }
 
 
-    }
+    
 }
 }
 
