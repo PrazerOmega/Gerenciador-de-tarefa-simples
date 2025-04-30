@@ -63,9 +63,9 @@ void pergunta(){
 
 void adicionarTarefa(){
     int cont = 0;
-    int escolha;
+    char escolha;
     int loop = 1;
-    char tarefa[1024];
+    char tarefa[1024], buffer[200];
 
     while(1){
     printf("Digite o ID da tarefa a ser incluida:\n");
@@ -75,10 +75,10 @@ void adicionarTarefa(){
     //scanf("%d", &escolha);
     switch (escolha)
     {
-    case 1:
-    printf("Escreva a tarefa:");
+    case '1':
+    printf("Escreva a tarefa %d:", escolha);
     fflush(stdin);
-    fgets(tarefa,1024,stdin);
+    fgets(tarefa,sizeof(buffer),stdin);
     base.id[escolha -1] = escolha;
     base.descricao[1024] = tarefa[1024];
     printf("ID: %d,\nTarefa: %s\n",base.id[escolha+1], base.descricao[1024]);
