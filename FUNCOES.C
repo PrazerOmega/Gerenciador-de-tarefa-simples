@@ -1,6 +1,8 @@
 #include "FUNCOES.H"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <locale.h>
 #include <conio.h>
 #include <windows.h>
 
@@ -46,6 +48,13 @@ void menu(){
     }
 }
 
+int convertorCharInt(char num1){
+int result = num1 - '0';
+
+return result;
+
+}
+
 void pergunta(){
     int escolha;    
     printf("Deseja continuar a acresentar tarefas?\n1-Sim\n2-Não");
@@ -62,28 +71,28 @@ void pergunta(){
 }
 
 void adicionarTarefa(){
-    int cont = 0;
-    char escolha = {0};
-    int loop = 1;
-    char tarefa[1024], buffer[200];
+    setlocale(LC_ALL, "");
+    int loop = 1, cont = 0, slot;
+    char escolha, tarefa[200];
+    printf("Digite o ID da tarefa a ser incluida:\n");  
 
     while(1){
-    printf("Digite o ID da tarefa a ser incluida:%c\n", escolha);
-   
-        
     escolha = getch();
     //scanf("%d", &escolha);
     switch (escolha)
     {
     case '1':
-    printf("Escreva a tarefa %c:", escolha);
-    //fflush(stdin);
-    fgets(tarefa,sizeof(buffer),stdin);
-    base.id[0] = (int)escolha;
-    base.descricao[1024] = tarefa[1024];
-    printf("ID: %d,\nTarefa: %s\n",base.id[escolha+1], base.descricao[1024]);
+    slot = (int)escolha;
+    printf("Escreva a tarefa: ");
+    fflush(stdin);
+    fgets(tarefa,sizeof(tarefa),stdin);
+    base.id[slot] = escolha;
+    strcpy(base.descricao, tarefa);
+    printf("ID: %c\nTarefa: %s", base.id[slot], base.descricao);
+    printf("o teste: %c\n", base.id[0]);
     pergunta();
         break;
+    
     
     default:
         break;
@@ -98,6 +107,7 @@ void adicionarTarefa(){
         if(cont == 10){
             loop = 0;
             printf("Limite de tarefas atingido!");
+            break;
         }
 
 
@@ -105,15 +115,6 @@ void adicionarTarefa(){
 }
 }
 
-/*void criaTarefa(char informacao[BUFFER], int arrayDes){
-    printf("Diga qual tarefa voce deseja incluir:\n");
-    fflush(stdin);
-    fgets(informacao,15,stdin);
-    snprintf(acao.descricao[arrayDes], BUFFER, "%s",informacao);
-    acao.id[arrayDes] = 1;
-    acao.concluida = 0;
-    printf("\nTarefa: %sID: %d\nStatus: %s\n", acao.descricao[arrayDes], acao.id[arrayDes],
-         acao.concluida?"concluida\n" : "Pendente\n");*/
   
 
 void listarTarefas(){

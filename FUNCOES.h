@@ -13,6 +13,7 @@ Tarefa base;
 
 
 void adicionarTarefa();
+//int convertorCharInt(char num1);
 void pergunta();
 void menu();
 void listarTarefas();
