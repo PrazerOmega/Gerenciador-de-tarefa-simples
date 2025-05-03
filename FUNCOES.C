@@ -75,34 +75,119 @@ void adicionarTarefa(){
     int loop = 1, cont = 0, slot;
     char escolha, tarefa[200];
     printf("Digite o ID da tarefa a ser incluida:\n");  
+    escolha = getch();
+    slot = escolha - '0';
 
     while(1){
-    escolha = getch();
+    
     //scanf("%d", &escolha);
     switch (escolha)
     {
     case '1':
-    slot = (int)escolha;
+    
     printf("Escreva a tarefa: ");
     fflush(stdin);
     fgets(tarefa,sizeof(tarefa),stdin);
     base.id[slot] = escolha;
     strcpy(base.descricao, tarefa);
     printf("ID: %c\nTarefa: %s", base.id[slot], base.descricao);
-    printf("o teste: %c\n", base.id[0]);
     pergunta();
         break;
     
+    case '2':
+    slot = escolha - '0';
+    printf("Escreva a tarefa: ");
+    fflush(stdin);
+    fgets(tarefa,sizeof(tarefa),stdin);
+    base.id[slot] = escolha;
+    strcpy(base.descricao, tarefa);
+    printf("ID: %c\nTarefa: %s", base.id[slot], base.descricao);
+    pergunta();
+        break;
+
+        case '3':
+    slot = escolha - '0';
+    printf("Escreva a tarefa: ");
+    fflush(stdin);
+    fgets(tarefa,sizeof(tarefa),stdin);
+    base.id[slot] = escolha;
+    strcpy(base.descricao, tarefa);
+    printf("ID: %c\nTarefa: %s", base.id[slot], base.descricao);
+    pergunta();
+        break;
+
+    case '4':
+    slot = escolha - '0';
+    printf("Escreva a tarefa: ");
+    fflush(stdin);
+    fgets(tarefa,sizeof(tarefa),stdin);
+    base.id[slot] = escolha;
+    strcpy(base.descricao, tarefa);
+    printf("ID: %c\nTarefa: %s", base.id[slot], base.descricao);
+    pergunta();
+        break;
+
+    case '5':
+    slot = escolha - '0';
+    printf("Escreva a tarefa: ");
+    fflush(stdin);
+    fgets(tarefa,sizeof(tarefa),stdin);
+    base.id[slot] = escolha;
+    strcpy(base.descricao, tarefa);
+    printf("ID: %c\nTarefa: %s", base.id[slot], base.descricao);
+    pergunta();
+        break;
+
+    case '6':
+    slot = escolha - '0';
+    printf("Escreva a tarefa: ");
+    fflush(stdin);
+    fgets(tarefa,sizeof(tarefa),stdin);
+    base.id[slot] = escolha;
+    strcpy(base.descricao, tarefa);
+    printf("ID: %c\nTarefa: %s", base.id[slot], base.descricao);
+    pergunta();
+        break;
+
+    case '7':
+    slot = escolha - '0';
+    printf("Escreva a tarefa: ");
+    fflush(stdin);
+    fgets(tarefa,sizeof(tarefa),stdin);
+    base.id[slot] = escolha;
+    strcpy(base.descricao, tarefa);
+    printf("ID: %c\nTarefa: %s", base.id[slot], base.descricao);
+    pergunta();
+        break;
+
+    case '8':
+    slot = escolha - '0';
+    printf("Escreva a tarefa: ");
+    fflush(stdin);
+    fgets(tarefa,sizeof(tarefa),stdin);
+    base.id[slot] = escolha;
+    strcpy(base.descricao, tarefa);
+    printf("ID: %c\nTarefa: %s", base.id[slot], base.descricao);
+    pergunta();
+        break;
+
+    case '9':
+    slot = escolha - '0';
+    printf("Escreva a tarefa: ");
+    fflush(stdin);
+    fgets(tarefa,sizeof(tarefa),stdin);
+    base.id[slot] = escolha;
+    strcpy(base.descricao, tarefa);
+    printf("ID: %c\nTarefa: %s", base.id[slot], base.descricao);
+    pergunta();
+        break;
     
     default:
-        break;
+    if(slot > 9 || slot <= 0){
+        printf("ID invalido!\nPor favor, digite um ID valido ou pressione ")
     }
-    fflush(stdin);
-    fgets(tarefa,100,stdin);
-    base.id[cont] = cont;
-    base.descricao[100] = tarefa[100];
-    printf("ID: %d,\nTarefa: %s\n",base.id[cont], base.descricao);
-        cont++;
+        break;
+    
 
         if(cont == 10){
             loop = 0;
