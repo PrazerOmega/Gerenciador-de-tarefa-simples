@@ -12,8 +12,7 @@
 
 int main(void){
     setlocale(LC_ALL,"");
-    //adicionarTarefa();
-    //listarTarefas();
+
     menu();
 
 }

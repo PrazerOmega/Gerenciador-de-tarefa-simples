@@ -26,7 +26,7 @@ void menu(){
         printf("Fechando o programa...");
         Sleep(3000);
         printf("\nObrigado pela preferencia :)");
-        Sleep(3000);
+        Sleep(2250);
         break;
     case '1':
     printf("Entrando no menu...");
@@ -207,6 +207,9 @@ void adicionarTarefa(){
     if(escolha == 1){
         adicionarTarefa();
     }else if(escolha == 2){
+        printf("Voltando ao menu...");
+        Sleep(1500);
+        system("cls");
         menu();
     }else{
         printf("Escolha invalida! Por favor slecione uma opção valida!");
