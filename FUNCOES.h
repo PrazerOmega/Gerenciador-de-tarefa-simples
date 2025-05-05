@@ -3,12 +3,12 @@
 
 typedef struct
 {
-    int id[10];
+    int id;
     char descricao[100];
     int concluida;// 0 = não, 1 = sim
 }Tarefa;
 
-Tarefa base;
+Tarefa base[100];
 
 
 

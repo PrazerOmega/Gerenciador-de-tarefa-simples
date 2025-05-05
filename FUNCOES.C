@@ -48,40 +48,37 @@ void menu(){
     }
 }
 
-int convertorCharInt(char num1){
-int result = num1 - '0';
-
-return result;
-
-}
-
-void pergunta(){
-    int escolha;    
-    printf("Deseja continuar a acresentar tarefas?\n1-Sim\n2-Não");
-    scanf("%d", &escolha);
-    if(escolha == 1){
-        adicionarTarefa();
-    }else if(escolha == 2){
-        menu();
-    }else{
-        printf("Escolha invalida! Por favor slecione uma opção valida!");
-        pergunta();
-    }
-
-}
-
-void adicionarTarefa(){
-    setlocale(LC_ALL, "");
-    int loop = 1, cont = 0, slot;
-    char escolha, tarefa[200];
+int escolhaCase(){
+    int escolha, slot;
     printf("Digite o ID da tarefa a ser incluida:\n");  
     escolha = getch();
     slot = escolha - '0';
 
+    return slot;
+}
+
+
+
+
+void adicionarTarefa(){
+    setlocale(LC_ALL, "");
+    char tarefa[30];
+    int loop = 1, cont = 0, slot = escolhaCase();
+    printf("Escreva a tarefa: ");
+    fflush(stdin);
+    fgets(tarefa,sizeof(tarefa),stdin);
+    base[slot].id = slot;
+    strcpy(base[slot].descricao, tarefa);
+    printf("ID: %d\nTarefa: %s", base[slot+1].id, base[slot].descricao);
+    pergunta();
+}
+
+
+//modelo original
+/*
     while(1){
     
-    //scanf("%d", &escolha);
-    switch (escolha)
+    switch (slot)
     {
     case '1':
     
@@ -184,7 +181,8 @@ void adicionarTarefa(){
     
     default:
     if(slot > 9 || slot <= 0){
-        printf("ID invalido!\nPor favor, digite um ID valido ou pressione ")
+        printf("ID invalido!\nPor favor, digite um ID valido ou pressione ");
+
     }
         break;
     
@@ -198,9 +196,24 @@ void adicionarTarefa(){
 
     
 }
-}
+}*/
 
   
+
+  void pergunta(){
+    int escolha;    
+    printf("Deseja continuar a acresentar tarefas?\n1-Sim\n2-Não");
+    scanf("%d", &escolha);
+    if(escolha == 1){
+        adicionarTarefa();
+    }else if(escolha == 2){
+        menu();
+    }else{
+        printf("Escolha invalida! Por favor slecione uma opção valida!");
+        pergunta();
+    }
+
+}
 
 void listarTarefas(){
     int escolha;
@@ -212,34 +225,34 @@ switch(escolha){
     case 0:
     menu();
     case 1:
-    printf("Tarefa:%s\nStatus:%d",base.descricao[0],base.concluida);
+    printf("Tarefa:%s\nStatus:%d",base[1].descricao,base[1].concluida);
     break;
     case 2:
-    printf("Tarefa:%s\nStatus:%d",base.descricao[1],base.concluida);
+    printf("Tarefa:%s\nStatus:%d",base[2].descricao,base[2].concluida);
     break;
     case 3:
-    printf("Tarefa:%s\nStatus:%d",base.descricao[2],base.concluida);
+    printf("Tarefa:%s\nStatus:%d",base[3].descricao,base[3].concluida);
     break;
     case 4:
-    printf("Tarefa:%s\nStatus:%d",base.descricao[3],base.concluida);
+    printf("Tarefa:%s\nStatus:%d",base[4].descricao,base[4].concluida);
     break;
     case 5:
-    printf("Tarefa:%s\nStatus:%d",base.descricao[4],base.concluida);
+    printf("Tarefa:%s\nStatus:%d",base[5].descricao,base[5].concluida);
     break;
     case 6:
-    printf("Tarefa:%s\nStatus:%d",base.descricao[5],base.concluida);
+    printf("Tarefa:%s\nStatus:%d",base[6].descricao,base[6].concluida);
     break;
     case 7:
-    printf("Tarefa:%s\nStatus:%d",base.descricao[6],base.concluida);
+    printf("Tarefa:%s\nStatus:%d",base[7].descricao,base[7].concluida);
     break;
     case 8:
-    printf("Tarefa:%s\nStatus:%d",base.descricao[7],base.concluida);
+    printf("Tarefa:%s\nStatus:%d",base[8].descricao,base[8].concluida);
     break;
     case 9:
-    printf("Tarefa:%s\nStatus:%d",base.descricao[8],base.concluida);
+    printf("Tarefa:%s\nStatus:%d",base[9].descricao,base[9].concluida);
     break;
     case 10:
-    printf("Tarefa:%s\nStatus:%d",base.descricao[9],base.concluida);
+    printf("Tarefa:%s\nStatus:%d",base[10].descricao,base[10].concluida);
     break;
     default:
     printf("Opção invalida!\n Escolha outro numero.");
