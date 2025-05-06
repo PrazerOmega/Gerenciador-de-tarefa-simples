@@ -61,7 +61,6 @@ int escolhaCase(){
 
 
 void adicionarTarefa(){
-    setlocale(LC_ALL, "");
     char tarefa[30];
     int loop = 1, cont = 0, slot = escolhaCase();
     printf("Escreva a tarefa: ");
@@ -69,7 +68,11 @@ void adicionarTarefa(){
     fgets(tarefa,sizeof(tarefa),stdin);
     base[slot].id = slot;
     strcpy(base[slot].descricao, tarefa);
-    printf("ID: %d\nTarefa: %s", base[slot+1].id, base[slot].descricao);
+    
+    Sleep(1750);
+    printf("ID: %d\n",base[slot].id);
+    printf("Tarefa: %s",base[slot].descricao);
+    Sleep(2500);
     pergunta();
 }
 
@@ -201,18 +204,19 @@ void adicionarTarefa(){
   
 
   void pergunta(){
-    int escolha;    
-    printf("Deseja continuar a acresentar tarefas?\n1-Sim\n2-Não");
-    scanf("%d", &escolha);
-    if(escolha == 1){
+    int ret;    
+    printf("\nDeseja continuar a acresentar tarefas?\n1-Sim\n2-Não\n");
+    ret = getch() - '0';
+   // scanf("%d", &escolha);
+    if(ret == 1){
         adicionarTarefa();
-    }else if(escolha == 2){
+    }else if(ret == 2){
         printf("Voltando ao menu...");
         Sleep(1500);
         system("cls");
         menu();
     }else{
-        printf("Escolha invalida! Por favor slecione uma opção valida!");
+        printf("Escolha invalida! Por favor selecione uma opção valida!");
         pergunta();
     }
 
