@@ -25,8 +25,10 @@ void menu(){
         case '0':
         printf("Fechando o programa...");
         Sleep(3000);
+        system("cls");
         printf("\nObrigado pela preferencia :)");
-        Sleep(2250);
+        Sleep(2050);
+        system("cls");
         break;
     case '1':
     printf("Entrando no menu...");
@@ -63,16 +65,19 @@ int escolhaCase(){
 void adicionarTarefa(){
     char tarefa[30];
     int loop = 1, cont = 0, slot = escolhaCase();
+    base[slot].concluida = 0;
     printf("Escreva a tarefa: ");
     fflush(stdin);
     fgets(tarefa,sizeof(tarefa),stdin);
     base[slot].id = slot;
     strcpy(base[slot].descricao, tarefa);
-    
-    Sleep(1750);
+    printf("Carregando...\n");
+    Sleep(1720);
+    printf("Tarefas cadastradas com sucesso!\nDetalhes:\n");
     printf("ID: %d\n",base[slot].id);
     printf("Tarefa: %s",base[slot].descricao);
-    Sleep(2500);
+    base[slot].concluida == 1? printf("Status: Concluido\n") : printf("Status: Pendente\n");
+    Sleep(2000);
     pergunta();
 }
 
@@ -95,7 +100,7 @@ void adicionarTarefa(){
         break;
     
 
-
+*/
   
 
   void pergunta(){
