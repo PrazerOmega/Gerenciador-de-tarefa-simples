@@ -55,7 +55,7 @@ int escolhaCase(){
     printf("Digite o ID da tarefa a ser incluida:\n");  
     escolha[0] = getch();
     escolha[1] = getch();
-    escolha[1] == '/r'? slot  = escolha[0] - '0' : slot = (escolha[0] - '0') * 10  + (escolha[1] - '0');
+    slot = escolha[1] == '\r'? escolha[0] - '0' : (escolha[0] - '0') * 10 + (escolha[1]- '0');
 
     return slot;
 }
@@ -83,27 +83,6 @@ void adicionarTarefa(){
 }
 
 
-//modelo original
-/*
-    while(1){
-    
-    switch (slot)
-    {
-    case '1':
-    
-    printf("Escreva a tarefa: ");
-    fflush(stdin);
-    fgets(tarefa,sizeof(tarefa),stdin);
-    base.id[slot] = escolha;
-    strcpy(base.descricao, tarefa);
-    printf("ID: %c\nTarefa: %s", base.id[slot], base.descricao);
-    pergunta();
-        break;
-    
-
-*/
-  
-
   void pergunta(){
     int ret;    
     printf("\nDeseja continuar a acresentar tarefas?\n1-Sim\n2-Não\n");
@@ -128,47 +107,12 @@ void listarTarefas(){
 printf("Digite a tarefa que voce deseja visualizar ou 0 para sair ");
 scanf("%d", &escolha);
 
-switch(escolha){
+printf("Tarefa: %s", base[escolha].descricao);
 
-    case 0:
-    menu();
-    case 1:
-    printf("Tarefa:%s\nStatus:%d",base[1].descricao,base[1].concluida);
-    break;
-    case 2:
-    printf("Tarefa:%s\nStatus:%d",base[2].descricao,base[2].concluida);
-    break;
-    case 3:
-    printf("Tarefa:%s\nStatus:%d",base[3].descricao,base[3].concluida);
-    break;
-    case 4:
-    printf("Tarefa:%s\nStatus:%d",base[4].descricao,base[4].concluida);
-    break;
-    case 5:
-    printf("Tarefa:%s\nStatus:%d",base[5].descricao,base[5].concluida);
-    break;
-    case 6:
-    printf("Tarefa:%s\nStatus:%d",base[6].descricao,base[6].concluida);
-    break;
-    case 7:
-    printf("Tarefa:%s\nStatus:%d",base[7].descricao,base[7].concluida);
-    break;
-    case 8:
-    printf("Tarefa:%s\nStatus:%d",base[8].descricao,base[8].concluida);
-    break;
-    case 9:
-    printf("Tarefa:%s\nStatus:%d",base[9].descricao,base[9].concluida);
-    break;
-    case 10:
-    printf("Tarefa:%s\nStatus:%d",base[10].descricao,base[10].concluida);
-    break;
-    default:
-    printf("Opção invalida!\n Escolha outro numero.");
-    listarTarefas();
-}
+
 menu();
 
-
 }
+
 void marcarConcluida();
 void removerTarefa();
