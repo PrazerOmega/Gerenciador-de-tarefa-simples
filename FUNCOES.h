@@ -5,7 +5,7 @@ typedef struct
 {
     int id;
     char descricao[100];
-    int concluida;// 0 = não, 1 = sim
+    int status;// 0 = não, 1 = sim
 }Tarefa;
 
 Tarefa base[100];

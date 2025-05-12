@@ -66,7 +66,7 @@ int escolhaCase(){
 void adicionarTarefa(){
     char tarefa[30];
     int loop = 1, cont = 0, slot = escolhaCase();
-    base[slot].concluida = 0;
+    base[slot].status = 0;
     printf("Escreva a tarefa: ");
     fflush(stdin);
     fgets(tarefa,sizeof(tarefa),stdin);
@@ -107,7 +107,9 @@ void listarTarefas(){
 printf("Digite a tarefa que voce deseja visualizar ou 0 para sair ");
 scanf("%d", &escolha);
 
-printf("Tarefa: %s", base[escolha].descricao);
+Sleep(1352);
+system("cls");
+printf("Tarefa: %s\n Status: %d", base[escolha].descricao, base[escolha].status = 0? );
 
 
 menu();
