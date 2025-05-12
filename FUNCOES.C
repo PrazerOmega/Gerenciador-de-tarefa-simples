@@ -51,10 +51,11 @@ void menu(){
 }
 
 int escolhaCase(){
-    int escolha, slot;
+    int escolha[2], slot;
     printf("Digite o ID da tarefa a ser incluida:\n");  
-    escolha = getch();
-    slot = escolha - '0';
+    escolha[0] = getch();
+    escolha[1] = getch();
+    escolha[1] == '/r'? slot  = escolha[0] - '0' : slot = (escolha[0] - '0') * 10  + (escolha[1] - '0');
 
     return slot;
 }
@@ -73,10 +74,10 @@ void adicionarTarefa(){
     strcpy(base[slot].descricao, tarefa);
     printf("Carregando...\n");
     Sleep(1720);
-    printf("Tarefas cadastradas com sucesso!\nDetalhes:\n");
+    printf("Tarefas cadastradas com sucesso!\nDetalhes da tarefa:\n");
     printf("ID: %d\n",base[slot].id);
     printf("Tarefa: %s",base[slot].descricao);
-    base[slot].concluida == 1? printf("Status: Concluido\n") : printf("Status: Pendente\n");
+    printf("Status: Pendente\n");
     Sleep(2000);
     pergunta();
 }
