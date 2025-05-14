@@ -107,10 +107,17 @@ void listarTarefas(){
 printf("Digite a tarefa que voce deseja visualizar ou 0 para sair ");
 scanf("%d", &escolha);
 
+printf("Carregando...");
 Sleep(1352);
 system("cls");
-printf("Tarefa: %s\n Status: %d", base[escolha].descricao, base[escolha].status = 0? );
 
+if(base[escolha].descricao == NULL){
+    printf("Nehuma tarefa adicionada");
+
+}else{
+    printf("Tarefa: %s\n", base[escolha].descricao);
+base[escolha].status == 0?printf("Status: Pendente!") : printf("Concluida!");
+} 
 
 menu();
 
