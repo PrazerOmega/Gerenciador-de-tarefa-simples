@@ -22,7 +22,7 @@ void menu(){
 
     switch (escolha)
     {
-        case '0':
+    case '0':
         printf("Fechando o programa...");
         Sleep(3000);
         system("cls");
@@ -31,8 +31,8 @@ void menu(){
         system("cls");
         break;
     case '1':
-    printf("Entrando no menu...");
-    Sleep(2500);
+        printf("Entrando no menu...");
+        Sleep(2500);
         system("cls");
         adicionarTarefa();
         break;
@@ -103,9 +103,11 @@ void adicionarTarefa(){
 }
 
 void listarTarefas(){
-    int escolha;
+    int escolha[2], slot;
+
 printf("Digite a tarefa que voce deseja visualizar ou 0 para sair ");
-scanf("%d", &escolha);
+escolha[0] = getch();
+//scanf("%d", &escolha);
 
 printf("Carregando...");
 Sleep(1352);
