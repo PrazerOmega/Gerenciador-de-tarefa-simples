@@ -5,6 +5,7 @@
 #include <locale.h>
 #include <conio.h>
 #include <windows.h>
+#include <ctype.h>
 
 //Adicionar tarefa
 //Listar tarefa
@@ -43,8 +44,8 @@ void menu(){
     case 4:
         removerTarefa();*/
     default:
-    printf("Escolha invalida! Por favor slecione uma opção valida!");
-    menu();
+        printf("Escolha invalida! Por favor slecione uma opção valida!");
+        menu();
         }
     break;
     }
@@ -103,23 +104,26 @@ void adicionarTarefa(){
 }
 
 void listarTarefas(){
-    int escolha[2], slot;
+    int escolha[2], holder;
 
 printf("Digite a tarefa que voce deseja visualizar ou 0 para sair ");
 escolha[0] = getch();
+escolha[1] = getch();
 //scanf("%d", &escolha);
 
-printf("Carregando...");
+holder = (escolha[0] - '0') * 10 + (escolha[1] - '1');
+
+printf("\nCarregando...\n");
 Sleep(1352);
-system("cls");
+//system("cls");
 
-if(base[escolha].descricao == NULL){
-    printf("Nehuma tarefa adicionada");
+for(int i = 0,cont = 0; i < sizeof(base[holder].descricao); i++){
 
-}else{
-    printf("Tarefa: %s\n", base[escolha].descricao);
-base[escolha].status == 0?printf("Status: Pendente!") : printf("Concluida!");
-} 
+    isalnum(base[holder].descricao[i])? cont++ : i++;
+    
+    cont > 0?printf("Tarefa %d,\n Descrição: %s", base[holder].id, base[holder].descricao) : printf("Sem tarefa!");
+    
+}
 
 menu();
 
