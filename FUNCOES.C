@@ -38,10 +38,16 @@ void menu(){
         adicionarTarefa();
         break;
     case '2':
+        printf("Entrando no menu...");
+        Sleep(2500);
+        system("cls");
         listarTarefas();
-    /*case 3:
-        marcarConcluida();
-    case 4:
+    case '3':
+        printf("Entrando no menu...");
+        Sleep(2500);
+        system("cls");
+        alterarStatus();
+    /*case '4':
         removerTarefa();*/
     default:
         printf("Escolha invalida! Por favor slecione uma opção valida!");
@@ -76,7 +82,7 @@ void adicionarTarefa(){
     base[numero].status = 0;
     printf("Carregando...\n");
     Sleep(1720);
-    printf("Tarefas cadastradas com sucesso!\nDetalhes da tarefa\n");
+    printf("Tarefa cadastradas com sucesso!\nDetalhes da tarefa\n");
     printf("ID: %d\n",base[numero].id);
     printf("Tarefa: %s",base[numero].descricao);
     printf("Status: %s\n", base[numero].status == 0? "Pendente" : "Concluida!");
@@ -152,7 +158,7 @@ void alterarStatus(){
 
     numero = (escolha[0] - '0') * 10 + (escolha[1] - '0');
 
-
+    printf("ID: %d\nTarefa: %s\nStatus: %s", base[numero].id, base[numero].descricao, base[numero].status == 0?"Pendente" : "Concluida");
 
 
 
