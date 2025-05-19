@@ -51,6 +51,7 @@ void menu(){
     }
 }
 
+
 int escolhaCase(){
     int escolha[2], numero;
     printf("Digite o ID da tarefa a ser incluida:\n");  
@@ -60,8 +61,6 @@ int escolhaCase(){
 
     return numero;
 }
-
-
 
 
 void adicionarTarefa(){
@@ -86,7 +85,7 @@ void adicionarTarefa(){
 }
 
 
-  void pergunta(){
+void pergunta(){
     int ret;    
     printf("\nDeseja continuar a acresentar tarefas?\n1-Sim\n2-Não\n");
     ret = getch() - '0';
@@ -104,6 +103,7 @@ void adicionarTarefa(){
     }
 
 }
+
 
 void listarTarefas(){
     int escolha[2], numero;
@@ -142,7 +142,6 @@ menu();
         }
 
 
-
 void alterarStatus(){
     int escolha[2], numero;
 
@@ -153,7 +152,7 @@ void alterarStatus(){
 
     numero = (escolha[0] - '0') * 10 + (escolha[1] - '0');
 
-    
+
 
 
 
