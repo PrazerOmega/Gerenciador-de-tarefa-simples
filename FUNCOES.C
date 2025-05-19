@@ -52,13 +52,13 @@ void menu(){
 }
 
 int escolhaCase(){
-    int escolha[2], slot;
+    int escolha[2], numero;
     printf("Digite o ID da tarefa a ser incluida:\n");  
     escolha[0] = getch();
     escolha[1] = getch();
-    slot = escolha[1] == '\r'? escolha[0] - '0' : (escolha[0] - '0') * 10 + (escolha[1]- '0');
+    numero = escolha[1] == '\r'? escolha[0] - '0' : (escolha[0] - '0') * 10 + (escolha[1]- '0');
 
-    return slot;
+    return numero;
 }
 
 
@@ -66,19 +66,21 @@ int escolhaCase(){
 
 void adicionarTarefa(){
     char tarefa[30];
-    int loop = 1, cont = 0, slot = escolhaCase();
-    base[slot].status = 0;
+    int loop = 1, cont = 0, numero = escolhaCase();
+    base[numero].status = 0;
+
     printf("Escreva a tarefa: ");
     fflush(stdin);
     fgets(tarefa,sizeof(tarefa),stdin);
-    base[slot].id = slot;
-    strcpy(base[slot].descricao, tarefa);
+    base[numero].id = numero;
+    strcpy(base[numero].descricao, tarefa);
+    base[numero].status = 0;
     printf("Carregando...\n");
     Sleep(1720);
-    printf("Tarefas cadastradas com sucesso!\nDetalhes da tarefa:\n");
-    printf("ID: %d\n",base[slot].id);
-    printf("Tarefa: %s",base[slot].descricao);
-    printf("Status: Pendente\n");
+    printf("Tarefas cadastradas com sucesso!\nDetalhes da tarefa\n");
+    printf("ID: %d\n",base[numero].id);
+    printf("Tarefa: %s",base[numero].descricao);
+    printf("Status: %s\n", base[numero].status == 0? "Pendente" : "Concluida!");
     Sleep(2000);
     pergunta();
 }
@@ -88,7 +90,7 @@ void adicionarTarefa(){
     int ret;    
     printf("\nDeseja continuar a acresentar tarefas?\n1-Sim\n2-Não\n");
     ret = getch() - '0';
-   // scanf("%d", &escolha);
+   
     if(ret == 1){
         adicionarTarefa();
     }else if(ret == 2){
@@ -104,30 +106,78 @@ void adicionarTarefa(){
 }
 
 void listarTarefas(){
-    int escolha[2], holder;
+    int escolha[2], numero;
 
 printf("Digite a tarefa que voce deseja visualizar ou 0 para sair ");
 escolha[0] = getch();
 escolha[1] = getch();
 //scanf("%d", &escolha);
 
-holder = (escolha[0] - '0') * 10 + (escolha[1] - '1');
+if (isdigit(escolha[0]) != 0 && isdigit(escolha[1]) != 0){
+numero = (escolha[0] - '0') * 10 + (escolha[1] - '0');
+}else{
+    printf("Digite valores numericos, por favor\n");
+    listarTarefas();
+}
 
 printf("\nCarregando...\n");
 Sleep(1352);
-//system("cls");
+system("cls");
 
-for(int i = 0,cont = 0; i < sizeof(base[holder].descricao); i++){
+for(int i = 0,cont = 0; i < sizeof(base[numero].descricao); i++){
 
-    isalnum(base[holder].descricao[i])? cont++ : i++;
-    
-    cont > 0?printf("Tarefa %d,\n Descrição: %s", base[holder].id, base[holder].descricao) : printf("Sem tarefa!");
-    
+    if(isalnum(base[numero].descricao[i])){
+        cont++;
+    }
+
+    if (cont > 0)
+    {
+        printf("Tarefa %d \nDescrição: %s \nStatus: %s", base[numero].id, base[numero].descricao, base[numero].status == 0? "Pendete" : "Concluida");
+        
+    }else{   
+    printf("Sem tarefa!");   
 }
-
 menu();
+    }   
+        }
+
+
+
+void alterarStatus(){
+    int escolha[2], numero;
+
+    printf("Digite o id da tarefa que deseja alterar: ");
+
+    escolha[0]  = getch();
+    escolha[1]  = getch();
+
+    numero = (escolha[0] - '0') * 10 + (escolha[1] - '0');
+
+    
+
+
+
 
 }
 
-void marcarConcluida();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 void removerTarefa();

@@ -17,7 +17,7 @@ void adicionarTarefa();
 void pergunta();
 void menu();
 void listarTarefas();
-void marcarConcluida();
+void alterarStatus();
 void removerTarefa();
 
 
