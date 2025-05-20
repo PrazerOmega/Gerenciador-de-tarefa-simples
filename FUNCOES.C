@@ -13,6 +13,20 @@
 //remover tarefa
 //Sair do programa
 
+
+int converterUni(int num){
+    int convertido = num - '0';
+
+    return convertido;
+}
+
+int converterDec(int num1, int num2){
+    int convertido = (num1 - '0') * 10 + (num2 - '0');
+
+
+    return convertido;
+}
+
 void menu(){
     char escolha;
     printf("\nEscolha uma das opções.\n1 - Adicionar uma tarefa\n2 - Visualizar tarefas\n3 - Alterar Status\n4 - Excluir Tarefa\n0 - Fechar programa!\n");
@@ -63,7 +77,8 @@ int escolhaCase(){
     printf("Digite o ID da tarefa a ser incluida:\n");  
     escolha[0] = getch();
     escolha[1] = getch();
-    numero = escolha[1] == '\r'? escolha[0] - '0' : (escolha[0] - '0') * 10 + (escolha[1]- '0');
+    converterDec(escolha[0], escolha[1]);
+   // numero = escolha[1] == '\r'? escolha[0] - '0' : (escolha[0] - '0') * 10 + (escolha[1]- '0');
 
     return numero;
 }
@@ -149,23 +164,34 @@ menu();
 
 
 void alterarStatus(){
-    int escolha[2], numero;
+    setlocale(LC_ALL,"");
+    int escolha[3], numero, menu;
 
-    printf("Digite o id da tarefa que deseja alterar: ");
+    printf("Digite o id da tarefa que deseja alterar:\n ");
 
     escolha[0]  = getch();
     escolha[1]  = getch();
 
-    numero = (escolha[0] - '0') * 10 + (escolha[1] - '0');
+    //numero = (escolha[0] - '0') * 10 + (escolha[1] - '0');
+    converterDec(escolha[0],escolha[1]);
 
-    printf("ID: %d\nTarefa: %s\nStatus: %s", base[numero].id, base[numero].descricao, base[numero].status == 0?"Pendente" : "Concluida");
-
-
-
+    printf("ID: %d\nTarefa: %s\nStatus atual: %s", base[numero].id, base[numero].descricao, base[numero].status == 0?"Pendente\n" : "Concluida\n");
+    printf("Deseja alterar o status para %s", base[numero].status == 0?"Concluida?\n" : "Pendente?\n");
+    printf("1-Sim\n2-Não\n");
+    escolha[2] = getche();
+    if(escolha[2] == 49){
+        base[numero].status = 1;
+    }else if(escolha[2] == 50){
+        printf("Deseja voltar ao menu principal?\n1-Sim\n2-Não\n");
+        menu = getch();
+        if (menu == 49)
+        {
+            base[numero].status
+        }
+        
+    }
 
 }
-
-
 
 
 
