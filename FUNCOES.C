@@ -1,6 +1,7 @@
 #include "FUNCOES.H"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <locale.h>
 #include <conio.h>
 #include <windows.h>
@@ -22,16 +23,19 @@ int converterUni(int num){
 int converterDec(int num1, int num2){
     int convertido = (num1 - '0') * 10 + (num2 - '0');
 
-
     return convertido;
 }
 
 void perguntaADD(){
-    int ret;    
+    int ret;
+    
     printf("\nDeseja continuar a acresentar tarefas?\n1-Sim\n2-Não\n");
-    ret = getch() - '0';
+    ret = converterUni(getch());
+    //ret = getch() - '0';
    
     if(ret == 1){
+        system("cls");
+        Sleep(500);
         adicionarTarefa();
     }else if(ret == 2){
         printf("Voltando ao menu...");
@@ -40,6 +44,7 @@ void perguntaADD(){
         menu();
     }else{
         printf("Escolha invalida! Por favor selecione uma opção valida!");
+
         perguntaADD();
     }
 
@@ -128,22 +133,19 @@ void menu(){
 }
 
 
-int escolhaCase(){
-    int escolha[2], numero;
-    printf("Digite o ID da tarefa a ser incluida:\n");  
-    escolha[0] = getch();
-    escolha[1] = getch();
-    converterDec(escolha[0], escolha[1]);
-   // numero = escolha[1] == '\r'? escolha[0] - '0' : (escolha[0] - '0') * 10 + (escolha[1]- '0');
-
-    numero = converterDec(escolha[0], escolha[1]);
+int getId(){
+    int numero, num1, num2;
+    printf("Digite o ID:\n");
+    num1 = getch();
+    num2 = getch();
+    numero = converterDec(num1, num2);
     return numero;
 }
 
 
 void adicionarTarefa(){
     char tarefa[30];
-    int loop = 1, cont = 0, numero = escolhaCase();
+    int loop = 1, cont = 0, numero = getId();
     base[numero].status = 0;
 
     printf("Escreva a tarefa: ");
@@ -154,11 +156,16 @@ void adicionarTarefa(){
     base[numero].status = 0;
     printf("Carregando...\n");
     Sleep(1720);
-    printf("Tarefa cadastradas com sucesso!\nDetalhes da tarefa\n");
+    printf("Tarefa cadastradas com sucesso!\n");
+    Sleep(1450);  
+    system("cls");      
+    printf("Detalhes da tarefa\n");
+    Sleep(700);
     printf("ID: %d\n",base[numero].id);
     printf("Tarefa: %s",base[numero].descricao);
     printf("Status: %s\n", base[numero].status == 0? "Pendente" : "Concluida!");
-    Sleep(2000);
+    Sleep(2450);
+    //system("cls");
     perguntaADD();
 }
 
@@ -167,12 +174,7 @@ void adicionarTarefa(){
 
 
 void listarTarefas(){
-    int escolha[2], numero;
-
-printf("Digite a tarefa que voce deseja visualizar ou 0 para sair ");
-escolha[0] = getch();
-escolha[1] = getch();
-//scanf("%d", &escolha);
+    int escolha[2], numero = getId();
 
 if (isdigit(escolha[0]) != 0 && isdigit(escolha[1]) != 0){
     numero = converterDec(escolha[0], escolha[1]);
@@ -206,15 +208,9 @@ menu();
 
 void alterarStatus(){
     
-    int escolha[3], numero;
+    int escolha[3], numero = getId();
 
     printf("Digite o id da tarefa que deseja alterar:\n ");
-
-    escolha[0]  = getch();
-    escolha[1]  = getch();
-
-    //numero = (escolha[0] - '0') * 10 + (escolha[1] - '0');
-    numero = converterDec(escolha[0],escolha[1]);
 
     printf("ID: %d\nTarefa: %s\nStatus atual: %s", base[numero].id, base[numero].descricao, base[numero].status == 0?"Pendente\n" : "Concluida\n");
     printf("Deseja alterar o status para %s", base[numero].status == 0?"Concluida?\n" : "Pendente?\n");
@@ -229,7 +225,7 @@ void alterarStatus(){
         printf("Alterando status...");
         Sleep(1500);
         printf("Status alterado com sucesso!\n");
-        printf("ID: %d\nDescrição: %s\nStatus: %s\n", base[numero].id, base[numero].descricao,base[numero].status == 0?"Pendente!":"Concluida" );
+        printf("ID: %d\nDescrição: %s\nStatus: %s", base[numero].id, base[numero].descricao,base[numero].status == 0?"Pendente!":"Concluida" );
         Sleep(1850);
         perguntaChange();
     }else if(escolha[2] == 50){
@@ -243,13 +239,8 @@ void alterarStatus(){
 
 
 void removerTarefa(){
-    int escolha[2], numero;
-
-    printf("Digite o id da tarefa que deseja excluir");
-    escolha[0] = getch();
-    escolha[1] = getch();
-
-    numero = converterDec(escolha[0], escolha[1]);
+    int numero = getId();
+    char text[] = "";
 
     for(int i = 0,cont = 0; i < sizeof(base[numero].descricao); i++){
 
@@ -259,8 +250,18 @@ void removerTarefa(){
 
     if (cont > 0){
         //Função de excluir tarefa
+        printf("Excluindo tarefa... " );
+        Sleep(1350);
+        strcpy(base[numero].descricao, text);
+        printf("Tarefa excluida com sucesso!");
+        system("cls");
+        perguntaEx();
+        
 
 }else{
     printf("não foi encontrado nenhuma tarefa, por favor digite novamente ou volte para o menu");
+    }
+    perguntaEx();
+
     }
 }
