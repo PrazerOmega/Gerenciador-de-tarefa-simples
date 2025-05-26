@@ -50,6 +50,22 @@ void perguntaADD(){
 
 }
 
+void perguntaCheck(){
+    int choice[2];
+    printf("Escolha uma das opções:\n1-Ver ID unico\n2-Ver ID's disponiveis");
+
+    if (isdigit(escolha[0]) != 0 && isdigit(escolha[1]) != 0){
+    numero = converterDec(escolha[0], escolha[1]);
+//numero = (escolha[0] - '0') * 10 + (escolha[1] - '0');
+}else{
+    printf("Digite valores numericos, por favor\n");
+    listarTarefas();
+}
+
+    if 
+
+}
+
 void perguntaChange(){
     int ret;    
     printf("\nDeseja alterar outra tarefa?\n1-Sim\n2-Não\n");
@@ -174,7 +190,8 @@ void adicionarTarefa(){
 
 
 void listarTarefas(){
-    int escolha[2], numero = getId();
+    int escolha[2], numero;
+
 
 if (isdigit(escolha[0]) != 0 && isdigit(escolha[1]) != 0){
     numero = converterDec(escolha[0], escolha[1]);
