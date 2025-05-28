@@ -51,18 +51,27 @@ void perguntaADD(){
 }
 
 void perguntaCheck(){
-    int choice[2];
-    printf("Escolha uma das opções:\n1-Ver ID unico\n2-Ver ID's disponiveis");
+    int digits[2],number,choice;
+    printf("Escolha uma das opções:\n1-Ver ID unico\n2-Ver ID's disponiveis\n");
+    choice = getch();
+    //scanf("%d", &choice);
 
-    if (isdigit(escolha[0]) != 0 && isdigit(escolha[1]) != 0){
-    numero = converterDec(escolha[0], escolha[1]);
-//numero = (escolha[0] - '0') * 10 + (escolha[1] - '0');
+    if(choice == 1){
+    printf("Por favor, digite o ID que deseja visualizar");
+    digits[0] = getch();
+    digits[1] = getch();
+    converterDec(digits[0],digits[1]);
+    
+     if (isdigit(digits[0]) != 0 && isdigit(digits[1]) != 0){
+     number = converterDec(digits[0], digits[1]);
+     printf("ID:%d\nTarefa:%s,Status:%s",base[number].id,base[number].descricao,base[number].status == 0?"Pendente":"Concluida");
+     Sleep(3000);
+        menu();
 }else{
-    printf("Digite valores numericos, por favor\n");
+    printf("\nDigite valores numericos, por favor\n");
     listarTarefas();
 }
-
-    if 
+    }
 
 }
 
@@ -190,6 +199,7 @@ void adicionarTarefa(){
 
 
 void listarTarefas(){
+    perguntaCheck();
     int escolha[2], numero;
 
 
@@ -221,6 +231,8 @@ for(int i = 0,cont = 0; i < sizeof(base[numero].descricao); i++){
 menu();
     }   
         }
+
+
 
 
 void alterarStatus(){
