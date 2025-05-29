@@ -54,23 +54,29 @@ void perguntaCheck(){
     int digits[2],number,choice;
     printf("Escolha uma das opções:\n1-Ver ID unico\n2-Ver ID's disponiveis\n");
     choice = getch();
-    //scanf("%d", &choice);
+    
+    choice = converterUni(choice);
 
     if(choice == 1){
-    printf("Por favor, digite o ID que deseja visualizar");
+    printf("Por favor, digite o ID que deseja visualizar\n");
     digits[0] = getch();
     digits[1] = getch();
-    converterDec(digits[0],digits[1]);
+    
     
      if (isdigit(digits[0]) != 0 && isdigit(digits[1]) != 0){
      number = converterDec(digits[0], digits[1]);
-     printf("ID:%d\nTarefa:%s,Status:%s",base[number].id,base[number].descricao,base[number].status == 0?"Pendente":"Concluida");
+     printf("Carregando...");
+     Sleep(1500);
+     system("cls");
+     printf("ID:%d\nTarefa:%sStatus:%s\n",base[number].id,base[number].descricao,base[number].status == 0?"Pendente":"Concluida");
      Sleep(3000);
         menu();
 }else{
     printf("\nDigite valores numericos, por favor\n");
     listarTarefas();
 }
+    }else if(choice == 2){
+
     }
 
 }
