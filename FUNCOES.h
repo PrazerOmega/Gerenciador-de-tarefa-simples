@@ -1,5 +1,6 @@
 #ifndef FUNCOES_H
 #define FUNCOES_H
+#define BUFFER 100
 
 typedef struct
 {
@@ -8,17 +9,15 @@ typedef struct
     int status;// 0 = não, 1 = sim
 }Tarefa;
 
-Tarefa base[100];
+Tarefa base[BUFFER];
 
 
 
-void adicionarTarefa();
-//int convertorCharInt(char num1);
-void pergunta();
+void questionAdd(),choreAdd();
+void questionView(),choreView();
+void questionStatus(),choreStatus();
+void questionRemove(),choreRemove();
 void menu();
-void listarTarefas();
-void alterarStatus();
-void removerTarefa();
 
 
 #endif
