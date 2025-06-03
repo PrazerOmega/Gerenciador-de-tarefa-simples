@@ -19,5 +19,9 @@ void questionStatus(),choreStatus();
 void questionRemove(),choreRemove();
 void menu();
 
+int getId(), converterUni(int num), converterDec(int num1,int num2);
+void noValues();
+
+
 
 #endif
