@@ -9,8 +9,8 @@
 void noValues(){
 for(int i = 0; i < sizeof(BUFFER); i++){
 
-    char noValue[BUFFER] = "0";
-    strcpy(base[i].descricao,noValue);
+    char noValue[0] = '\0';
+    //strcpy(base[i].descricao,noValue);
 
     }
 }
@@ -109,17 +109,21 @@ void questionView(){
      Sleep(1500);
      system("cls");
      printf("ID:%d\nTarefa:%sStatus:%s\n",base[number].id,base[number].descricao,base[number].status == 0?"Pendente":"Concluida");
-     Sleep(3000);
+     Sleep(2500);
         menu();
+        //Add continue searching or get back to menu
 }else{
     printf("\nDigite valores numericos, por favor\n");
     questionView();
 }
-    /*}else if(choice == 2){
-        for(int i ; i < sizeof(base[BUFFER]);I++){
-            if(base[i] )
-        }*/
-    }
+    
+    }/*else if(choice == 2){
+        for(int i = 0; i < BUFFER; i++){
+            for(int j = 0; j < 100; j++){
+                if(base[i].descricao[j])
+            }
+        }
+    }*/
 
 }
 
