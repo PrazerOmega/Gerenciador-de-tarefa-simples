@@ -93,31 +93,29 @@ void questionView(){
     choice = converterUni(getch());
 
     if(choice == 1){
-    printf("Por favor, digite o ID que deseja visualizar\n");
-    digits[0] = getch();
-    digits[1] = getch();
+     printf("Por favor, digite o ID que deseja visualizar\n");
+     digits[0] = getch();
+     digits[1] = getch();
 
-    if (isdigit(digits[0]) != 0 && isdigit(digits[1]) != 0){
-    number = converterDec(digits[0], digits[1]);
-    printf("Carregando...");
-    Sleep(1500);
-    system("cls");
-    printf("ID:%d\nTarefa:%s\nStatus:%s\n",number,base[number].descricao == '\0'?"Nenhuma tarefa":base[number].descricao,base[number].status == 0?"Pendente":"Concluida");
-    Sleep(2500);
-    menu();
+        if (isdigit(digits[0]) != 0 && isdigit(digits[1]) != 0){
+            number = converterDec(digits[0], digits[1]);
+             printf("Carregando...");
+               Sleep(1500);
+                system("cls");
+                printf("ID:%d\nTarefa:%s\nStatus:%s\n",number,base[number].descricao == '\0'?"Nenhuma tarefa":base[number].descricao,base[number].status == 0?"Pendente":"Concluida");
+                Sleep(2500);
+                menu();
     //Add continue searching or get back to menu
-}else{
-    printf("\nDigite valores numericos, por favor\n");
-    questionView();
-}
+    }else{
+     printf("\nDigite valores numericos, por favor\n");
+        questionView();
+    }
     
-    }/*else if(choice == 2){
-        for(int i = 0; i < BUFFER; i++){
-            for(int j = 0; j < 100; j++){
-                if(base[i].descricao[j])
-            }
-        }
-    }*/
+    }else{
+        printf("work in progress\n");
+        Sleep(1500);
+        questionView();
+    }
 
 }
 
