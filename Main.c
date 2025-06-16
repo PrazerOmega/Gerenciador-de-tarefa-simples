@@ -1,7 +1,4 @@
-#include <stdlib.h>
-#include <stdio.h>
-#include <locale.h>
-#include "FUNCOES.h"
+#include "Includes.h"
 
 
 //Adicionar tarefa
@@ -12,7 +9,7 @@
 
 int main(void){
     setlocale(LC_ALL,"");
-
+    noValues();
     menu();
 
 }

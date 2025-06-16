@@ -8,7 +8,7 @@
 
 void noValues(){
 for(int i = 0; i < BUFFER; i++){
-    strcpy(base[i].descricao,"\0");
+    base[i].descricao[0] = '\0';
     }
 }
 
@@ -61,7 +61,7 @@ void questionAdd(){
 }
 
 void choreAdd(){
-    char tarefa[30];
+    char tarefa[BUFFER];
     int loop = 1, cont = 0, numero = getId();
     base[numero].status = 0;
 
@@ -79,17 +79,16 @@ void choreAdd(){
     printf("Detalhes da tarefa\n");
     Sleep(700);
     printf("ID: %d\n",base[numero].id);
-    printf("Tarefa: %s",base[numero].descricao);
+    printf("Tarefa: %s\n",base[numero].descricao);
     printf("Status: %s\n", base[numero].status == 0? "Pendente" : "Concluida!");
     Sleep(2450);
-    //system("cls");
     questionAdd();
 }
 
 
 void questionView(){
     int digits[2],number,choice;
-    printf("Escolha uma das opções:\n1-Ver ID unico\n2-Ver ID's disponiveis\n");
+    printf("Escolha uma das opcoes:\n1-Ver ID unico\n2-Ver ID's disponiveis\n3-Voltar para o menu principal\n");
     choice = converterUni(getch());
 
     if(choice == 1){
@@ -102,21 +101,30 @@ void questionView(){
              printf("Carregando...");
                Sleep(1500);
                 system("cls");
-                printf("ID:%d\nTarefa:%s\nStatus:%s\n",number,base[number].descricao == '\0'?"Nenhuma tarefa":base[number].descricao,base[number].status == 0?"Pendente":"Concluida");
+                printf("ID:%d\nTarefa:%sStatus:%s\n",number,base[number].descricao[0] == '\0'?"Nenhuma tarefa":base[number].descricao,base[number].status == 0?"Pendente\n":"Concluida\n");
                 Sleep(2500);
-                menu();
-    //Add continue searching or get back to menu
-    }else{
+                questionView();
+    }else if(choice == 2){
      printf("\nDigite valores numericos, por favor\n");
         questionView();
-    }
-    
-    }else{
-        printf("work in progress\n");
+    }  
+ }else if (choice == 2){
+    printf("Carregando...");
+    Sleep(1250);
+        for(int i = 0; i < BUFFER; i++){
+            if(base[i].descricao[0] == '\0'){
+                printf("%d\n",i);
+            }
+        }
+    }else if(choice == 3){
+        printf("Aguarde...\n");
         Sleep(1500);
+        system("cls");
+        menu();
+    }else{
+        printf("Escolha uma opcao valida!\n");
         questionView();
     }
-
 }
 
 void choreView(){
@@ -256,7 +264,6 @@ void choreRemove(){
 
 void menu(){
     char escolha;
-    noValues();
     printf("\nEscolha uma das opções.\n1 - Adicionar uma tarefa\n2 - Visualizar tarefas\n3 - Alterar Status\n4 - Excluir Tarefa\n0 - Fechar programa!\n");
 
  while(1){
@@ -289,10 +296,12 @@ void menu(){
         Sleep(2500);
         system("cls");
         choreStatus();
+        break;
     case '4':
         questionRemove();
+        break;
     default:
-        printf("Escolha invalida! Por favor slecione uma opção valida!");
+        printf("Escolha invalida! Por favor selecione uma opção valida!");
         menu();
         }
     break;
