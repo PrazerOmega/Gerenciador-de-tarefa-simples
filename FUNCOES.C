@@ -79,7 +79,7 @@ void choreAdd(){
     printf("Detalhes da tarefa\n");
     Sleep(700);
     printf("ID: %d\n",base[numero].id);
-    printf("Tarefa: %s\n",base[numero].descricao);
+    printf("Tarefa: %s",base[numero].descricao);
     printf("Status: %s\n", base[numero].status == 0? "Pendente" : "Concluida!");
     Sleep(2450);
     questionAdd();
@@ -115,14 +115,20 @@ void questionView(){
             if(base[i].descricao[0] == '\0'){
                 printf("%d\n",i);
             }
-        }
+    }
+    printf("...\n");
+    Sleep(1250);
+    questionView();
     }else if(choice == 3){
         printf("Aguarde...\n");
         Sleep(1500);
         system("cls");
         menu();
     }else{
+        system("cls");
         printf("Escolha uma opcao valida!\n");
+        Sleep(3000);
+        system("cls");
         questionView();
     }
 }
@@ -134,7 +140,7 @@ void choreView(){
 
 if (isdigit(escolha[0]) != 0 && isdigit(escolha[1]) != 0){
     numero = converterDec(escolha[0], escolha[1]);
-//numero = (escolha[0] - '0') * 10 + (escolha[1] - '0');
+
 }else{
     printf("Digite valores numericos, por favor\n");
     choreView();
@@ -185,7 +191,7 @@ void choreStatus(){
     
     int escolha[3], numero = getId();
 
-    printf("Digite o id da tarefa que deseja alterar:\n ");
+    printf("Digite o id da tarefa que deseja alterar:\n");
 
     printf("ID: %d\nTarefa: %s\nStatus atual: %s", base[numero].id, base[numero].descricao, base[numero].status == 0?"Pendente\n" : "Concluida\n");
     printf("Deseja alterar o status para %s", base[numero].status == 0?"Concluida?\n" : "Pendente?\n");
@@ -198,9 +204,10 @@ void choreStatus(){
             base[numero].status = 0;
         }
         printf("Alterando status...");
-        Sleep(1500);
+        Sleep(1950);
         printf("Status alterado com sucesso!\n");
-        printf("ID: %d\nDescrição: %s\nStatus: %s", base[numero].id, base[numero].descricao,base[numero].status == 0?"Pendente!":"Concluida" );
+        Sleep(2200);
+        printf("ID:%d\nDescrição:%s\nStatus:%s", base[numero].id, base[numero].descricao,base[numero].status == 0?"Pendente!":"Concluida" );
         Sleep(1850);
         questionStatus();
     }else if(escolha[2] == 50){
@@ -306,4 +313,5 @@ void menu(){
         }
     break;
     }
+    
 }
