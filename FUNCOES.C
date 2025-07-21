@@ -40,7 +40,7 @@ int getId(){
 void questionAdd(){
     int ret;
     
-    printf("\nDeseja continuar a acresentar tarefas?\n1-Sim\n2-Não\n");
+    printf("\nDeseja continuar a acresentar tarefas?\n1-Sim\n2-Nao\n");
     ret = converterUni(getch());
    
     if(ret == 1){
@@ -109,11 +109,11 @@ void questionView(){
         questionView();
     }  
  }else if (choice == 2){
-    printf("Carregando...");
+    printf("Carregando...\n");
     Sleep(1250);
-        for(int i = 0; i < BUFFER; i++){
+        for(int i = 0; i < BUFFER; i +=5){
             if(base[i].descricao[0] == '\0'){
-                printf("%d\n",i);
+                printf("%d, %d, %d, %d, %d\n",i, i+1, i+2, i+3,i+4);
             }
     }
     printf("...\n");
@@ -266,7 +266,6 @@ void choreRemove(){
 
     }
 }
-
 
 
 void menu(){
