@@ -1,36 +1,78 @@
 #include "Includes.h"
 
-//Adicionar tarefa*
-//Listar tarefa*
-//Marcar tarefa concluida*
-//remover tarefa
-//Sair do programa
+#define BUFFER 100
+#define DESC_SIZE 256
 
-void noValues(){
-for(int i = 0; i < BUFFER; i++){
-    base[i].descricao[0] = '\0';
+typedef struct {
+    int id; 
+    char descricao[DESC_SIZE];
+    int status; // 0 = pendente, 1 = concluída
+} Tarefa;
+
+/* Base de dados simples em memória */
+Tarefa base[BUFFER];
+
+/* Protótipos (as funções estão implementadas nas partes seguintes) */
+void choreAdd(void);
+void questionView(void);
+void choreStatus(void);
+void questionRemove(void);
+void choreRemove(void);
+
+/* --------------------------------------------------
+   Inicializa 
+   -------------------------------------------------- */
+void noValues(void){
+    for (int i = 0; i < BUFFER; ++i){
+        base[i].id = i;
+        base[i].descricao[0] = '\0';
+        base[i].status = 0;
     }
 }
 
-int converterUni(int num){
-    int convertido = num - '0';
-
-    return convertido;
+/* Limpa o buffer de entrada (caso use fgets/scanf misturados) */
+void clearInputBuffer(void){
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) {}
 }
 
-int converterDec(int num1, int num2){
-    int convertido = (num1 - '0') * 10 + (num2 - '0');
-
-    return convertido;
+/* Leitura segura de linha (remove CR/LF) */
+void lerLinha(char *buf, size_t size){
+    if (fgets(buf, (int)size, stdin) == NULL){
+        buf[0] = '\0';
+        return;
+    }
+    size_t ln = strcspn(buf, "\r\n");
+    buf[ln] = '\0';
 }
 
-int getId(){
-    int numero, num1, num2;
-    printf("Digite o ID:\n");
-    num1 = getch();
-    num2 = getch();
-    numero = converterDec(num1, num2);
-    return numero;
+/* Leitura segura de inteiro com prompt. Retorna 1 se OK, 0 em erro/EOF. */
+int lerInt(const char *prompt, int *out){
+    char buf[64];
+    char *endptr;
+    long val;
+
+    while (1){
+        if (prompt) printf("%s", prompt);
+        if (fgets(buf, sizeof(buf), stdin) == NULL) return 0;
+        size_t ln = strcspn(buf, "\r\n");
+        buf[ln] = '\0';
+        if (buf[0] == '\0'){
+            printf("Entrada vazia. Tente novamente.\n");
+            continue;
+        }
+        val = strtol(buf, &endptr, 10);
+        if (endptr == buf){
+            printf("Entrada invalida. Digite um numero.\n");
+            continue;
+        }
+        *out = (int)val;
+        return 1;
+    }
+}
+
+void clearScreen(void){
+    system("cls");
 }
 
 
@@ -269,49 +311,67 @@ void choreRemove(){
 
 
 
-void menu(){
-    char escolha;
-    printf("\nEscolha uma das opções.\n1 - Adicionar uma tarefa\n2 - Visualizar tarefas\n3 - Alterar Status\n4 - Excluir Tarefa\n0 - Fechar programa!\n");
+void menu(void){
+    char buf[32];
 
- while(1){
-    escolha = getch();
-    //scanf("%d", &escolha);
+    while (1){
+        printf("\n=== GERENCIADOR DE TAREFAS ===\n");
+        printf("1 - Adicionar uma tarefa\n");
+        printf("2 - Visualizar tarefas\n");
+        printf("3 - Alterar Status\n");
+        printf("4 - Excluir Tarefa\n");
+        printf("0 - Fechar programa\n");
+        printf("Escolha uma opcao: ");
 
-    switch (escolha)
-    {
-    case '0':
-        printf("Fechando o programa...");
-        Sleep(3000);
-        system("cls");
-        printf("\nObrigado pela preferencia :)");
-        Sleep(2050);
-        system("cls");
-        break;
-    case '1':
-        printf("Entrando no menu...");
-        Sleep(2500);
-        system("cls");
-        choreAdd();
-        break;
-    case '2':
-        printf("Entrando no menu...");
-        Sleep(2500);
-        system("cls");
-        questionView();
-    case '3':
-        printf("Entrando no menu...");
-        Sleep(2500);
-        system("cls");
-        choreStatus();
-        break;
-    case '4':
-        questionRemove();
-        break;
-    default:
-        printf("Escolha invalida! Por favor selecione uma opção valida!");
-        menu();
+        lerLinha(buf, sizeof(buf));
+        if (buf[0] == '\0'){
+            printf("Escolha invalida. Tente novamente.\n");
+            continue;
         }
-    break;
+
+        char opc = buf[0];
+
+        switch (opc){
+            case '0':
+                printf("Fechando o programa...\n");
+                Sleep(1500);
+                clearScreen();
+                printf("Obrigado pela preferencia :)\n");
+                Sleep(1200);
+                return; // sai do menu
+
+            case '1':
+                printf("Entrando no menu de adicionar...\n");
+                Sleep(700);
+                clearScreen();
+                choreAdd();
+                break;
+
+            case '2':
+                printf("Entrando no menu de visualizacao...\n");
+                Sleep(700);
+                clearScreen();
+                questionView();
+                break;
+
+            case '3':
+                printf("Entrando no menu de alteracao de status...\n");
+                Sleep(700);
+                clearScreen();
+                choreStatus();
+                break;
+
+            case '4':
+                printf("Entrando no menu de exclusao...\n");
+                Sleep(700);
+                clearScreen();
+                questionRemove();
+                break;
+
+            default:
+                printf("Escolha invalida! Por favor selecione uma opcao valida!\n");
+                Sleep(1000);
+                break;
+        }
     }
-    
 }

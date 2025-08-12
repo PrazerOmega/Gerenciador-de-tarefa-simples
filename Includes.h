@@ -5,4 +5,4 @@
 #include <locale.h>
 #include <conio.h>
 #include <windows.h>
-#include <ctype.h>
+#include <stdbool.h>
