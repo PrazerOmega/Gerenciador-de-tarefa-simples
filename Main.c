@@ -9,7 +9,15 @@
 
 int main(void){
     setlocale(LC_ALL,"");
+
     noValues();
+
+    loadBase("tarefas.dat");
+
     menu();
-    
+
+    saveBase("tarefa.dat");
+
+    return 0;
+
 }
