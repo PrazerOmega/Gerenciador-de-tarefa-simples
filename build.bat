@@ -1,7 +1,7 @@
 @echo off
 echo Compilando...
 
-gcc Main.c FUNCOES.C -o main
+gcc Main.c FUNCOES.c -o main
 
 if %errorlevel% neq 0 (
     echo Erro na compilação.

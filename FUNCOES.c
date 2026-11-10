@@ -1,4 +1,4 @@
-#include "includes.h"
+#include "Includes.h"
 
 Tarefa base[BUFFER];
 
@@ -47,7 +47,11 @@ int lerInt(const char *prompt, int *out){
 }
 
 void clearScreen(void){
+#ifdef _WIN32
     system("cls");
+#else
+    system("clear");
+#endif
 }
 
 int converterUni(int ch){return ch - '0';}
@@ -106,12 +110,12 @@ void questionAdd(){
     lerInt("> ", &ret);
 
     if(ret == 1){
-        system("cls");
+        clearScreen();
         choreAdd();
     }else if(ret == 2){
         printf("Voltando ao menu...");
         Sleep(1500);
-        system("cls");
+        clearScreen();
     }else{
         printf("Escolha invalida!\n");
         Sleep(1000);

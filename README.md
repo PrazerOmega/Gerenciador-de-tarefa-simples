@@ -1,6 +1,7 @@
 # Gerenciador de Tarefas Simples
 
-Gerenciador de tarefas de linha de comando escrito em C, feito para o console do Windows.
+Gerenciador de tarefas de linha de comando escrito em C, que roda no console do Windows e no
+terminal do Linux.
 É o segundo projeto de gerenciamento de tarefas do autor, numa versão mais simples: não gera
 arquivos `.txt`, guarda as tarefas em memória e grava tudo num único arquivo binário ao sair.
 
@@ -15,42 +16,48 @@ arquivos `.txt`, guarda as tarefas em memória e grava tudo num único arquivo b
 
 ## Requisitos
 
-- **Windows**: o código usa `windows.h` (`Sleep`), `conio.h` e `system("cls")`
-- **GCC via MinGW**: a configuração do VS Code espera o compilador em `C:/MinGW/bin/gcc.exe`
-  e o depurador em `C:/MinGW/bin/gdb.exe`
+- Um compilador **GCC**:
+  - **Windows**: MinGW. A configuração do VS Code espera o compilador em
+    `C:/MinGW/bin/gcc.exe` e o depurador em `C:/MinGW/bin/gdb.exe`
+  - **Linux**: o `gcc` da distribuição (no Ubuntu/Debian, `sudo apt install build-essential`)
 
-No Linux ou no macOS o projeto não compila sem adaptações. Veja
-[Limitações e problemas conhecidos](#limitações-e-problemas-conhecidos).
+O código é o mesmo nos dois sistemas. O que muda de um para o outro fica isolado com
+`#ifdef _WIN32`: a pausa (`Sleep` no Windows, `usleep` no Linux, definido em `Includes.h`) e
+a limpeza de tela (`cls` ou `clear`, em `clearScreen()`).
 
 ## Como compilar e executar
 
-### Opção 1: `build.bat`
+### Opção 1: script de build
 
-Na pasta do projeto, rode:
+Na pasta do projeto, rode o script do seu sistema:
 
 ```bat
 build.bat
 ```
 
-O script compila `Main.c` e `FUNCOES.C`, gera `main.exe` e já abre o programa.
+```sh
+./build.sh
+```
 
-### Opção 2: VS Code
+Os dois compilam `Main.c` e `FUNCOES.c`, geram o executável (`main.exe` no Windows, `main` no
+Linux) e já abrem o programa.
+
+### Opção 2: VS Code (Windows)
 
 O projeto já vem com a pasta `.vscode` configurada:
 
-- **Compilar**: `Ctrl+Shift+B` roda a task `build` (`gcc -g main.c funcoes.c -o main.exe`)
+- **Compilar**: `Ctrl+Shift+B` roda a task `build` (`gcc -g Main.c FUNCOES.c -o main.exe`)
 - **Depurar**: `F5` usa a configuração *Debug C com GCC*, que compila e abre o programa
   num console externo com o `gdb`
 
 ### Opção 3: na mão
 
-```bat
-gcc -x c Main.c FUNCOES.C -o main.exe
-main.exe
+```sh
+gcc Main.c FUNCOES.c -o main
+./main
 ```
 
-O `-x c` força o GCC a tratar `FUNCOES.C` como C. Sem ele, a extensão `.C` em maiúsculo
-é interpretada como C++ em sistemas que diferenciam maiúsculas de minúsculas.
+No Windows, troque `-o main` por `-o main.exe` e rode `main.exe`.
 
 ## Como usar
 
@@ -113,10 +120,11 @@ compilador e da arquitetura e não deve ser editado à mão.
 | Arquivo | Conteúdo |
 |---------|----------|
 | `Main.c` | Ponto de entrada: inicializa a base, carrega o arquivo, abre o menu e salva ao sair |
-| `FUNCOES.C` | Toda a lógica: leitura de entrada, menu, cadastro, consulta, status, exclusão e persistência |
+| `FUNCOES.c` | Toda a lógica: leitura de entrada, menu, cadastro, consulta, status, exclusão e persistência |
 | `FUNCOES.h` | Constantes (`BUFFER`, `DESC_SIZE`), a `struct Tarefa` e os protótipos das funções |
-| `Includes.h` | Junta os includes da biblioteca padrão, do Windows e do `FUNCOES.h` |
+| `Includes.h` | Junta os includes da biblioteca padrão e do `FUNCOES.h`, e escolhe o que é específico de Windows ou Linux |
 | `build.bat` | Script que compila e executa no Windows |
+| `build.sh` | Script que compila e executa no Linux |
 | `.vscode/` | Task de build, configuração de depuração e IntelliSense para MinGW |
 | `tarefa.dat` | Base de tarefas salva (gerada pelo programa) |
 | `main.exe`, `a.out`, `build/` | Arquivos gerados pela compilação que foram versionados |
@@ -133,20 +141,19 @@ compilador e da arquitetura e não deve ser editado à mão.
 | `choreStatus()` | Alterna o status de uma tarefa |
 | `choreRemove()` | Exclui a tarefa de um ID |
 | `lerLinha()` / `lerInt()` / `getId()` | Leitura de texto, de número e de ID válido (0 a 99) pelo teclado |
+| `clearScreen()` | Limpa o terminal com `cls` (Windows) ou `clear` (Linux) |
 
 `questionAdd()`, `questionStatus()` e `questionRemove()` perguntam se o usuário quer repetir
-a operação, mas hoje não são chamadas pelo menu. `converterUni()`, `converterDec()` e
-`clearScreen()` também estão no código sem uso.
+a operação, mas hoje não são chamadas pelo menu. `converterUni()` e `converterDec()` também
+estão no código sem uso.
 
 ## Limitações e problemas conhecidos
 
 - **As tarefas não voltam na próxima execução.** O programa carrega `tarefas.dat` (com "s")
   mas salva em `tarefa.dat` (sem "s"), em `Main.c`. Por isso toda execução começa com a base
   vazia e mostra "Arquivo não encontrado".
-- **Só funciona no Windows.** Depende de `windows.h`, `conio.h` e do comando `cls`.
-- **Diferença de maiúsculas nos nomes de arquivo.** `FUNCOES.C` inclui `"includes.h"`, mas o
-  arquivo se chama `Includes.h`. A task do VS Code também chama `main.c` e `funcoes.c`. No
-  Windows funciona porque o sistema de arquivos ignora maiúsculas; em outros sistemas, não.
+- **macOS não foi testado.** O caminho que não é Windows usa só recursos POSIX, então deve
+  funcionar, mas ninguém confirmou.
 - **Não existe opção para listar todas as tarefas.** A opção "Ver IDs disponíveis" mostra só
   os IDs livres.
 - **Cadastrar num ID ocupado sobrescreve a tarefa** sem pedir confirmação.

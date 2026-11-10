@@ -7,8 +7,8 @@
         "command": "gcc",
         "args": [
           "-g",
-          "main.c",
-          "funcoes.c",
+          "Main.c",
+          "FUNCOES.c",
           "-o",
           "main.exe"
         ],

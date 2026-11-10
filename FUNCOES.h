@@ -17,6 +17,7 @@ extern Tarefa base[BUFFER];
 
 void noValues(void);
 void menu(void);
+void clearScreen(void);
 
 void lerLinha(char*buf, size_t size);
 int lerInt(const char *prompt, int *out);
